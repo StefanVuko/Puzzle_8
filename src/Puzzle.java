@@ -44,12 +44,12 @@ public class Puzzle {
                     System.out.print(puzzleBoard[c+(r*3)]+ " | ");
                 }
                 else {
-                    System.out.print(puzzleBoard[c+(r*3)]);
+                    System.out.print(puzzleBoard[c+(r*3)]); // making sure the last index does not have a " | "
                 }
             }
             System.out.println(" ");
             if(r != 2) {
-                System.out.println("----------");
+                System.out.println("----------"); // making sure the last row does not have dashed lines at end
             }
         }
     }
@@ -60,10 +60,10 @@ public class Puzzle {
         int[] possibleSwappableIndex = new int[4]; //If an empty space is in the middle, there could be 4 possibilities at most.
 
         //Calculations for the index
-        int upIndex = emptySpace - 3;
-        int downIndex = emptySpace + 3;
-        int leftIndex = emptySpace - 1;
-        int rightIndex = emptySpace + 1;
+        int upIndex = emptySpace - 3; // going up in table
+        int downIndex = emptySpace + 3; // going down in table
+        int leftIndex = emptySpace - 1; // going left in table
+        int rightIndex = emptySpace + 1; // going right in table
 
         possibleSwappableIndex[0] = (emptySpace % 3 != 0 && leftIndex >= 0) ? leftIndex : -1;
         possibleSwappableIndex[1] = (rightIndex % 3 != 0 && rightIndex <= 8) ? rightIndex : -1;
@@ -95,9 +95,9 @@ public class Puzzle {
     //Returns the heuristic value depending on which one was chosen. (1 = Hamming, 2 = Manhattan)
     public int getHeuristic (int heuristic) {
         if(heuristic == 1)
-            return missplacements;
+            return missplacements; // "Hamming"
         else
-            return sumOfDistance;
+            return sumOfDistance; // "Manhattan"
     }
 
     //Shuffles the puzzle randomly

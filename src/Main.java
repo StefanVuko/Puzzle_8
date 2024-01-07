@@ -1,10 +1,11 @@
 import java.util.Scanner;
 
 public class Main {
-    private static long totalTime = 0;
-    private static long totalDepth = 0;
-    private static long avgSearchCost = 0;
+    private static long totalTime = 0; // variable for totalTime of all Puzzles
+    private static long totalDepth = 0; // variable for totalDepth of all Puzzles
+    private static long avgSearchCost = 0; // variable for averageCost of all Puzzles
 
+    // calling up the start of the program
     public static void main(String[] args) {
         Start();
     }
@@ -18,12 +19,12 @@ public class Main {
         System.out.println("2 = Manhattan");
         System.out.println();
         Scanner input = new Scanner(System.in);
-        int heuristicOption = input.nextInt();
+        int heuristicOption = input.nextInt(); // input for heuristic
         System.out.println();
 
         System.out.println("How many puzzles do you want to solve?");
         System.out.println();
-        int rounds = input.nextInt();
+        int rounds = input.nextInt(); // input for how many random puzzles should be solved
         int count = 1;
 
         for (int i = 0; i < rounds; i++) {
@@ -32,7 +33,7 @@ public class Main {
             Puzzle puzzle = new Puzzle();
             System.out.println("Generated puzzle");
             puzzle.printPuzzle();
-            if (!puzzle.getIsPuzzleSolveable()) {
+            if (!puzzle.getIsPuzzleSolveable()) { // check if the puzzle can be solved
                 System.out.println("Not solveable!");
             }
             else {
@@ -67,6 +68,7 @@ public class Main {
                 ", Cost: " + start.getSearchCost() +
                 ", Avg. Cost: " + start.getSearchCost()/goal.getCurrentDepth(goal));
 
+        // adding values of all puzzles in the end
         totalTime += start.getTime() / 1000000;
         totalDepth += goal.getCurrentDepth(goal);
         avgSearchCost += start.getSearchCost()/goal.getCurrentDepth(goal);
